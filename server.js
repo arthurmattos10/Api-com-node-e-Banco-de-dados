@@ -1,10 +1,37 @@
 import express from 'express'
 
 const app = express()
+app.use(express.json())
 
-app.get('/usuario', (req, res) => {
-    res.send('Ok, deu bom')
+const users = []
+
+app.post('/usuarios', (req, res) => {
+     
+users.push(req.body)
+
+res.status(201).json(req.body)
+
+})
+
+app.get('/usuarios', (req, res) => {
+    res.status(200).json(users)
 })
 
 
 app.listen(3000)
+
+/*
+    API de Usuarios
+
+    - Criar um usuário
+    - Listar todos os usuários
+    - Editar um usuário
+    - Deletar um usuário 
+
+
+
+
+
+    usuario: arthur
+    senha: arthur123
+*/
